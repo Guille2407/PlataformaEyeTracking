@@ -47,10 +47,6 @@ ini = True
 cola = []
 construccion = []
 
-#cola.append("forward")
-#cola.append("backward")
-#cola.append("turn-right")
-
 
 def visualizar(canva):
     global pantalla, frame, ini, PARPADEOS
@@ -137,14 +133,6 @@ def visualizar(canva):
                     cv.circle(frame, mesh_points[MOUTH_TOP], radius=2, color=(255, 255, 255), thickness=-1)#color=(50, 168, 82), thickness=-1)
                     cv.circle(frame, mesh_points[MOUTH_BOTTOM], radius=2, color=(255, 255, 255), thickness=-1)#color=(50, 168, 82), thickness=-1)
 
-
-                    #cv.circle(frame, mesh_points[LEFT_EYE_EYELID_BOT], radius=2, color=(255, 255, 255), thickness=-1)#color=(50, 168, 82), thickness=-1)
-                    #cv.circle(frame, mesh_points[LEFT_EYE_EYELID_TOP], radius=2, color=(255, 255, 255), thickness=-1)#color=(50, 168, 82), thickness=-1)
-                    
-
-                    #cv.line(frame, mesh_points[LEFT_EYE_TOP], mesh_points[LEFT_EYE_BOTTOM], (50, 168, 82), 1)
-                    #print(center_left)
-                    #print(mesh_points[33])
                     distOjoIzqH = euclaideanDistance(mesh_points[LEFT_EYE_INT],mesh_points[LEFT_EYE_EXT])
                     distOjoDerH = euclaideanDistance(mesh_points[RIGHT_EYE_INT],mesh_points[RIGHT_EYE_EXT])
                     distOjoIzqV = euclaideanDistance(mesh_points[LEFT_EYE_TOP],mesh_points[LEFT_EYE_BOTTOM])
@@ -161,18 +149,7 @@ def visualizar(canva):
                     ratioDer = (((distOjoDerH + distOjoIzqH)/2) / (euclaideanDistance(mesh_points[LEFT_EYE_EXT], center_left) + euclaideanDistance(mesh_points[RIGHT_EYE_INT], center_right))/2)
                     ratioArriba = (((distOjoDerV + distOjoIzqV)/2) / (euclaideanDistance(mesh_points[LEFT_EYE_TOP], center_left) + euclaideanDistance(mesh_points[RIGHT_EYE_TOP], center_right))/2)
                     ratioAbajo = (((distOjoDerV + distOjoIzqV)/2) / (euclaideanDistance(mesh_points[LEFT_EYE_BOTTOM], center_left) + euclaideanDistance(mesh_points[RIGHT_EYE_BOTTOM], center_right))/2)
-                    #ratio = distOjoIzqH / distOjoDerH
-                    #print(euclaideanDistance(mesh_points[LEFT_EYE_EXT], center_left))
-                    #if(euclaideanDistance(mesh_points[LEFT_EYE_EXT], center_left) < 0.5):
-                    #print(distOjoIzqV, (euclaideanDistance(mesh_points[LEFT_EYE_EXT], center_left)), "-->", (distOjoIzqV/(euclaideanDistance(mesh_points[LEFT_EYE_EXT], center_left))))
-                    #cv.putText(frame, 
-                    #    'Parpadeos ->'+str(PARPADEOS), 
-                    #    #str(ratioParpadeo),
-                    #    (200, 250), 
-                    #    font, 1, 
-                    #   (255, 0, 255), 
-                    #   2, 
-                    #   cv.LINE_4)
+
                     if(ratioParpadeo < 0.08):
                         PARPADEOS = PARPADEOS + 1
 
@@ -347,9 +324,6 @@ areaOtrosSliders = canvas.create_rectangle(500,800, 770, 1000,outline='black', f
 areaSensibilidadDerIzq = canvas.create_rectangle(800,800, 1070, 1000,outline='black', fill='#cddef1')
 areaSensibilidadArriAbaj = canvas.create_rectangle(1100,800, 1370, 1000,outline='black', fill='#cddef1')
 
-# e1 = Entry(canvas)
-# canvas.create_window(800, 500, anchor=NW, window=e1)
-# e1.insert(0,"adios") 
 canvas.pack(fill="both", expand=True)
 
 # Botones
